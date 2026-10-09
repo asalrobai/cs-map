@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خارطة علوم الحاسب | دليلك الشامل لكل التخصصات</title>
+<meta name="description" content="موقع عربي شامل يشرح جميع فروع علوم الحاسب: المتطلبات، مسار التعلم، أفضل المصادر، والوظائف">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070b1a; --bg2:#0d1430; --card:#121b3dcc; --card-solid:#131c40;
+  --line:#ffffff1a; --txt:#f2f5ff; --muted:#a9b4d6;
+  --p1:#6c5cff; --p2:#00e0c6; --p3:#ff5ca8; --p4:#ffb020;
+  --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo','Tajawal',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;
+ background:radial-gradient(900px 500px at 85% -5%,#6c5cff44,transparent),
+ radial-gradient(800px 500px at 10% 20%,#00e0c633,transparent),
+ radial-gradient(700px 600px at 50% 90%,#ff5ca822,transparent),var(--bg);}
+.grid-bg{position:fixed;inset:0;z-index:-1;opacity:.14;
+ background-image:linear-gradient(#fff2 1px,transparent 1px),linear-gradient(90deg,#fff2 1px,transparent 1px);
+ background-size:44px 44px;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 60%,transparent 100%)}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:auto;padding:0 22px}
+/* nav */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:#070b1acc;border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1200px;margin:auto}
+.logo{display:flex;align-items:center;gap:12px;font-weight:900;font-size:1.25rem}
+.logo-mark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;
+ background:linear-gradient(135deg,var(--p1),var(--p2));box-shadow:0 8px 30px #6c5cff66}
+.links{display:flex;gap:6px;flex-wrap:wrap}
+.links a{padding:9px 16px;border-radius:12px;color:var(--muted);font-weight:700;font-size:.95rem;transition:.25s}
+.links a:hover,.links a.active{background:#ffffff14;color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:14px;font-weight:800;border:0;cursor:pointer;transition:.25s;font-family:inherit;font-size:1rem}
+.btn-p{background:linear-gradient(135deg,var(--p1),var(--p3));color:#fff;box-shadow:0 10px 30px #6c5cff55}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 16px 40px #6c5cff77}
+.btn-g{background:#ffffff12;color:#fff;border:1px solid var(--line)}
+.btn-g:hover{background:#ffffff20}
+/* hero */
+.hero{padding:70px 0 40px;text-align:center;position:relative}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#ffffff10;border:1px solid var(--line);padding:8px 18px;border-radius:100px;font-size:.9rem;color:var(--muted);font-weight:700}
+.badge b{color:var(--p2)}
+.hero h1{font-size:clamp(2rem,5.5vw,3.8rem);font-weight:900;line-height:1.35;margin:22px auto 14px;max-width:900px}
+.hero h1 span{background:linear-gradient(90deg,var(--p2),var(--p1),var(--p3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:1.15rem;max-width:720px;margin:auto;line-height:2}
+.hero-cta{display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:40px auto 0;max-width:900px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;backdrop-filter:blur(10px)}
+.stat b{font-size:1.8rem;display:block;background:linear-gradient(135deg,var(--p2),var(--p1));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--muted);font-size:.9rem;font-weight:700}
+/* search */
+.search-bar{max-width:700px;margin:34px auto 0;display:flex;gap:10px;background:#ffffff0d;border:1px solid var(--line);padding:8px;border-radius:18px;backdrop-filter:blur(10px)}
+.search-bar input{flex:1;background:transparent;border:0;outline:0;color:#fff;font-family:inherit;font-size:1.05rem;padding:10px 16px}
+.search-bar input::placeholder{color:var(--muted)}
+.filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.chip{padding:9px 20px;border-radius:100px;background:#ffffff0c;border:1px solid var(--line);color:var(--muted);font-weight:700;cursor:pointer;font-family:inherit;font-size:.9rem;transition:.2s}
+.chip:hover{color:#fff;border-color:var(--p1)}
+.chip.on{background:linear-gradient(135deg,var(--p1),var(--p3));color:#fff;border-color:transparent}
+/* section */
+section{padding:56px 0}
+.sec-head{text-align:center;margin-bottom:34px}
+.sec-head h2{font-size:2rem;font-weight:900}
+.sec-head h2 i{font-style:normal;color:var(--p2)}
+.sec-head p{color:var(--muted);margin-top:8px;font-size:1.05rem}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;backdrop-filter:blur(12px);transition:.3s;cursor:pointer;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-8px);border-color:#6c5cff88;box-shadow:0 24px 60px #00000066}
+.card-img{height:190px;position:relative;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.card:hover .card-img img{transform:scale(1.08)}
+.card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,#0d1430ee)}
+.card-emoji{position:absolute;top:14px;right:14px;z-index:2;font-size:2rem;background:#00000088;backdrop-filter:blur(8px);width:58px;height:58px;display:grid;place-items:center;border-radius:16px;border:1px solid var(--line)}
+.card-diff{position:absolute;top:16px;left:14px;z-index:2;font-size:.78rem;font-weight:800;padding:6px 14px;border-radius:100px}
+.d1{background:#00e0c633;color:#00f5d8;border:1px solid #00e0c655}
+.d2{background:#ffb02033;color:#ffb020;border:1px solid #ffb02055}
+.d3{background:#ff5ca833;color:#ff8bbb;border:1px solid #ff5ca855}
+.card-body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card-body h3{font-size:1.25rem;font-weight:900}
+.card-body>p{color:var(--muted);font-size:.94rem;line-height:1.9}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.meta span{font-size:.78rem;font-weight:700;background:#ffffff0d;border:1px solid var(--line);padding:5px 12px;border-radius:100px;color:#cdd6f4}
+.card-foot{margin-top:auto;padding-top:12px;display:flex;gap:10px}
+.mini-btn{flex:1;text-align:center;padding:11px;border-radius:12px;font-weight:800;font-size:.9rem;font-family:inherit;cursor:pointer;border:1px solid var(--line);background:#ffffff0c;color:#fff;transition:.2s}
+.mini-btn:hover{background:#ffffff1c}
+.mini-btn.solid{background:linear-gradient(135deg,var(--p1),var(--p3));border:0}
+/* roadmap strip */
+.path-sec{background:linear-gradient(180deg,#ffffff06,#ffffff02);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;position:relative;overflow:hidden}
+.step::before{counter-increment:s;content:counter(s);position:absolute;left:10px;top:2px;font-size:4.5rem;font-weight:900;opacity:.1}
+.step b{display:block;margin-bottom:8px;font-size:1.05rem}
+.step p{color:var(--muted);font-size:.9rem;line-height:1.9}
+/* modal */
+.modal-ov{position:fixed;inset:0;background:#04060fd9;backdrop-filter:blur(8px);z-index:100;display:none;overflow-y:auto;padding:24px}
+.modal-ov.open{display:block}
+.modal{max-width:920px;margin:20px auto;background:linear-gradient(180deg,#16204d,#0e1533);border:1px solid #ffffff22;border-radius:26px;overflow:hidden;animation:up .35s}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.modal-hero{height:260px;position:relative}
+.modal-hero img{width:100%;height:100%;object-fit:cover}
+.modal-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#00000022,#0e1533)}
+.modal-title{position:absolute;bottom:18px;right:26px;left:26px;z-index:2}
+.modal-title h2{font-size:1.9rem;font-weight:900}
+.modal-close{position:absolute;top:16px;left:16px;z-index:3;width:44px;height:44px;border-radius:14px;border:1px solid var(--line);background:#000000aa;color:#fff;font-size:1.3rem;cursor:pointer}
+.modal-body{padding:28px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tab{padding:10px 22px;border-radius:12px;border:1px solid var(--line);background:#ffffff08;color:var(--muted);font-weight:800;cursor:pointer;font-family:inherit}
+.tab.on{background:linear-gradient(135deg,var(--p1),var(--p3));color:#fff;border:0}
+.tabpane{display:none;animation:up .3s}
+.tabpane.on{display:block}
+.tl{position:relative;padding-right:28px}
+.tl::before{content:"";position:absolute;right:8px;top:8px;bottom:8px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--p2),var(--p1),var(--p3))}
+.tl-item{position:relative;background:#ffffff08;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px}
+.tl-item::before{content:"";position:absolute;right:-25px;top:20px;width:14px;height:14px;border-radius:50%;background:var(--p2);box-shadow:0 0 0 5px #00e0c622}
+.tl-item b{color:var(--p2)}
+.tl-item p{color:#d5dcf5;font-size:.93rem;line-height:1.9;margin-top:4px}
+.req-list{display:grid;gap:10px}
+.req{background:#ffffff08;border:1px solid var(--line);border-radius:14px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;line-height:1.9;font-size:.94rem}
+.req i{font-style:normal;font-size:1.2rem}
+.res-card{display:flex;gap:14px;background:#ffffff08;border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px;align-items:center;transition:.2s}
+.res-card:hover{border-color:var(--p2);transform:translateX(-4px)}
+.res-num{width:52px;height:52px;flex-shrink:0;border-radius:14px;display:grid;place-items:center;font-weight:900;font-size:1.3rem;background:linear-gradient(135deg,var(--p1),var(--p2))}
+.res-card b{display:block}
+.res-card small{color:var(--muted)}
+.res-card a{margin-right:auto;flex-shrink:0;background:#00e0c622;color:var(--p2);border:1px solid #00e0c644;padding:9px 20px;border-radius:12px;font-weight:800;font-size:.85rem}
+.jobs{display:flex;gap:8px;flex-wrap:wrap}
+.jobs span{background:linear-gradient(135deg,#6c5cff33,#ff5ca833);border:1px solid #ffffff22;padding:8px 18px;border-radius:100px;font-weight:700;font-size:.88rem}
+/* compare table */
+.table-wrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:760px;background:var(--card)}
+th{background:#6c5cff22;padding:14px;font-weight:900;white-space:nowrap}
+td{padding:13px 14px;border-top:1px solid var(--line);color:#dbe2fa;text-align:center}
+td:first-child{font-weight:800;color:#fff}
+/* inquiry */
+.inq{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+@media(max-width:860px){.inq{grid-template-columns:1fr}}
+form{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;display:grid;gap:14px}
+label{font-weight:800;font-size:.92rem}
+input,select,textarea{background:#ffffff0a;border:1px solid var(--line);border-radius:12px;color:#fff;padding:13px 16px;font-family:inherit;font-size:.95rem;width:100%;outline:0;transition:.2s}
+input:focus,select:focus,textarea:focus{border-color:var(--p1);box-shadow:0 0 0 3px #6c5cff33}
+select option{background:#131c40}
+textarea{min-height:120px;resize:vertical}
+.faq{display:grid;gap:12px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.faq-q{padding:18px 20px;font-weight:800;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:.3s;color:var(--muted);line-height:2;font-size:.93rem}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:18px}
+/* toast */
+.toast{position:fixed;bottom:24px;right:50%;transform:translateX(50%) translateY(120px);background:linear-gradient(135deg,#00b894,#00e0c6);color:#04263f;font-weight:900;padding:15px 30px;border-radius:16px;z-index:200;transition:.4s;box-shadow:0 16px 40px #00000088}
+.toast.show{transform:translateX(50%) translateY(0)}
+footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:.9rem;margin-top:30px}
+footer b{color:#fff}
+.owner-card{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:18px;background:#ffffff0a;border:1px solid var(--line);border-radius:18px;padding:14px 26px;max-width:440px;margin-left:auto;margin-right:auto;backdrop-filter:blur(10px)}
+.owner-avatar{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:1.4rem;color:#fff;background:linear-gradient(135deg,var(--p1),var(--p2));box-shadow:0 8px 24px #6c5cff55;flex-shrink:0}
+.owner-info{display:flex;flex-direction:column;gap:2px;text-align:right}
+.owner-info b{color:#fff;font-size:1rem;letter-spacing:.5px}
+.owner-info a{color:var(--p2);font-size:.9rem;font-weight:700;transition:.2s}
+.owner-info a:hover{color:#fff}
+@media(max-width:720px){.links{display:none}.hero{padding:46px 0 20px}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav><div class="nav-in">
+  <div class="logo"><div class="logo-mark">💻</div> خارطة الحاسب</div>
+  <div class="links">
+    <a href="#home" class="active">الرئيسية</a>
+    <a href="#fields">التخصصات</a>
+    <a href="#roadmap">خارطة الطريق</a>
+    <a href="#compare">مقارنة</a>
+    <a href="#inquiry">الاستفسارات</a>
+  </div>
+  <a href="#inquiry" class="btn btn-p">اسألنا ✉️</a>
+</div></nav>
+
+<header class="hero container" id="home">
+  <div class="badge">🎓 الدليل العربي الشامل • <b>&nbsp;12 تخصصاً&nbsp;</b> • مسارات + مصادر</div>
+  <h1>اكتشف جميع فروع <span>علوم الحاسب</span> واختر طريقك بثقة</h1>
+  <p>شرح مفصّل لكل تخصص: ماهو؟ ماذا تحتاج قبله؟ خطوات التدرج من الصفر للاحتراف، وأفضل 3 مصادر تعليمية موثوقة لكل مجال — كل ذلك في مكان واحد.</p>
+  <div class="hero-cta">
+    <a href="#fields" class="btn btn-p">استكشف التخصصات 🚀</a>
+    <a href="#roadmap" class="btn btn-g">من أين أبدأ؟ 🧭</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>12</b><span>تخصصاً مشروحاً بالتفصيل</span></div>
+    <div class="stat"><b>36</b><span>مصدراً تعليمياً منتقى</span></div>
+    <div class="stat"><b>5</b><span>مراحل في كل مسار تعلم</span></div>
+    <div class="stat"><b>100%</b><span>مجاني وباللغة العربية</span></div>
+  </div>
+  <div class="search-bar">
+    <input id="search" placeholder="🔍 ابحث عن تخصص... (مثال: ذكاء اصطناعي، أمن، ويب)">
+  </div>
+  <div class="filters" id="filters">
+    <button class="chip on" data-f="all">الكل</button>
+    <button class="chip" data-f="beginner">مناسب للمبتدئين 🟢</button>
+    <button class="chip" data-f="demand">الأعلى طلباً 🔥</button>
+    <button class="chip" data-f="math">يحتاج رياضيات 📐</button>
+  </div>
+</header>
+
+<section id="fields" class="container">
+  <div class="sec-head"><h2>🗂️ جميع <i>التخصصات</i> وفروعها</h2><p>اضغط على أي بطاقة لعرض التفاصيل الكاملة: المتطلبات، التدرج، المصادر، والوظائف</p></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section id="roadmap" class="path-sec">
+  <div class="container">
+    <div class="sec-head"><h2>🧭 التسلسل المنطقي <i>لدخول المجال</i></h2><p>القاعدة الذهبية: لا تقفز! هذه المراحل الخمس تنطبق على كل التخصصات</p></div>
+    <div class="steps">
+      <div class="step"><b>1️⃣ الأساسيات</b><p>أساسيات الحاسب + لغة برمجة واحدة (Python) + تفكير منطقي. المدة: 2-3 أشهر.</p></div>
+      <div class="step"><b>2️⃣ التأسيس النظري</b><p>الخوارزميات، هياكل البيانات، قواعد البيانات، أساسيات الشبكات ونظم التشغيل.</p></div>
+      <div class="step"><b>3️⃣ التخصص</b><p>اختر مجالاً واحداً فقط وتعمّق فيه 4-6 أشهر بمشاريع عملية حقيقية.</p></div>
+      <div class="step"><b>4️⃣ المشاريع والمعرض</b><p>ابنِ 3-5 مشاريع قوية وانشرها على GitHub — هذا هو سيرتك الذاتية الحقيقية.</p></div>
+      <div class="step"><b>5️⃣ الاحتراف والتوظيف</b><p>تدريب عملي، مساهمات مفتوحة المصدر، تحضير للمقابلات، ثم أول وظيفة أو عمل حر.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="compare" class="container">
+  <div class="sec-head"><h2>⚖️ جدول <i>المقارنة السريعة</i></h2><p>قارن بين التخصصات من حيث الصعوبة والمدة والطلب في السوق</p></div>
+  <div class="table-wrap"><table id="cmp"><thead><tr><th>التخصص</th><th>الصعوبة</th><th>مدة الاحتراف</th><th>الطلب</th><th>الراتب</th><th>رياضيات؟</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<section id="inquiry" class="container">
+  <div class="sec-head"><h2>💬 صفحة <i>الاستفسارات</i></h2><p>محتار بين تخصصين؟ أرسل سؤالك وسنرشدك — أو تصفح الأسئلة الشائعة</p></div>
+  <div class="inq">
+    <form id="qform">
+      <label>الاسم الكامل</label><input id="qn" required placeholder="مثال: أحمد محمد">
+      <label>البريد الإلكتروني</label><input id="qe" type="email" required placeholder="you@email.com" dir="ltr" style="text-align:right">
+      <label>التخصص الذي تسأل عنه</label>
+      <select id="qf"><option>استشارة عامة: أي تخصص يناسبني؟</option><option>الذكاء الاصطناعي</option><option>الأمن السيبراني</option><option>تطوير الويب</option><option>علوم البيانات</option><option>تطبيقات الموبايل</option><option>الحوسبة السحابية</option><option>تطوير الألعاب</option><option>غير ذلك</option></select>
+      <label>سؤالك / استفسارك</label><textarea id="qm" required placeholder="اكتب سؤالك بالتفصيل... مثلاً: خلفيتي ثانوية عامة وأحب الرياضيات، هل أبدأ بعلوم البيانات أم هندسة البرمجيات؟"></textarea>
+      <button class="btn btn-p" style="justify-content:center">إرسال الاستفسار 📨</button>
+      <small style="color:var(--muted)">يتم حفظ استفسارك محلياً في متصفحك + فتح تطبيق البريد لإرساله.</small>
+    </form>
+    <div>
+      <div class="faq" id="faq"></div>
+      <div style="margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px">
+        <b>📬 استفساراتك السابقة (<span id="qc">0</span>)</b>
+        <div id="qlist" style="margin-top:10px;display:grid;gap:8px;color:var(--muted);font-size:.9rem"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>صُنع بـ ❤️ لطلاب التقنية العرب — <b>خارطة علوم الحاسب</b> © 2026<br>جميع المصادر التعليمية المذكورة ملك لأصحابها
+<div class="owner-card">
+  <div class="owner-avatar">A</div>
+  <div class="owner-info">
+    <b>ABDULAZIZ SAAD ALROBAI</b>
+    <a href="mailto:asalrobai@hotmail.com" dir="ltr">✉️ asalrobai@hotmail.com</a>
+  </div>
+</div></footer>
+
+<div class="modal-ov" id="mov"><div class="modal">
+  <div class="modal-hero"><img id="mimg" src="" alt=""><button class="modal-close" onclick="closeM()">✕</button>
+    <div class="modal-title"><h2 id="mt"></h2><p id="ms" style="color:#cdd6f4"></p></div></div>
+  <div class="modal-body">
+    <div class="tabs">
+      <button class="tab on" data-t="0">📖 الشرح</button>
+      <button class="tab" data-t="1">🧱 المتطلبات</button>
+      <button class="tab" data-t="2">🪜 رحلة التدرج</button>
+      <button class="tab" data-t="3">🎓 أفضل 3 مصادر</button>
+      <button class="tab" data-t="4">💼 الوظائف</button>
+    </div>
+    <div class="tabpane on" id="p0"></div><div class="tabpane" id="p1"></div>
+    <div class="tabpane" id="p2"></div><div class="tabpane" id="p3"></div><div class="tabpane" id="p4"></div>
+  </div>
+</div></div>
+<div class="toast" id="toast">تم إرسال استفسارك بنجاح ✅</div>
+
+<script>
+const F=[
+{id:"se",e:"🛠️",t:"هندسة البرمجيات والبرمجة",s:"فن بناء الأنظمة والبرامج بمنهجية هندسية",img:"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80",lv:2,d:"متوسط",dur:"8-12 شهر",dem:"🔥🔥🔥 عالٍ جداً",sal:"مرتفع",math:"أساسي فقط",bg:1,demf:1,
+desc:"هندسة البرمجيات هي التخصص الأم: تتعلم كيف تُبنى البرامج من الفكرة حتى الإطلاق — تحليل المتطلبات، التصميم، البرمجة، الاختبار، والنشر. تشمل لغات مثل Python و Java و C++، ومفاهيم OOP و Git والعمل الجماعي. وهو البوابة الإلزامية قبل أي تخصص آخر.",
+req:[["💻","حاسوب بأي مواصفات + اتصال إنترنت — لا تحتاج جهازاً قوياً في البداية."],["🔤","اللغة الإنجليزية الأساسية (قراءة المصطلحات التقنية) — تتحسن بالممارسة."],["🧠","التفكير المنطقي وحل المشكلات — أهم من الحفظ، ويتطور بالتدريب."],["📐","أساسيات الرياضيات (جبر + منطق) — مستوى الثانوية كافٍ للبداية."]],
+path:[["المرحلة 1: لغة واحدة (شهران)","أتقن Python: المتغيرات، الشروط، الحلقات، الدوال، OOP. حل 50 مسألة على HackerRank."],["المرحلة 2: هياكل البيانات والخوارزميات (شهران)","Arrays, Lists, Stack, Queue, Big-O. موقع LeetCode سهل المستوى."],["المرحلة 3: الأدوات الاحترافية (شهر)","Git و GitHub، سطر الأوامر، أساسيات قواعد البيانات SQL."],["المرحلة 4: مشروع متكامل (شهران)","نظام إدارة (مكتبة/متجر) كامل مع قاعدة بيانات وواجهة."],["المرحلة 5: الاحتراف (مستمر)","Design Patterns، الاختبارات، المساهمة في مشاريع مفتوحة المصدر."]],
+res:[["Elzero Web School — Python & CS","عربي • مجاني • عملي جداً","https://www.youtube.com/@ElzeroWebSchool"],["CS50 Harvard — مقدمة علوم الحاسب","إنجليزي مترجم • الأفضل عالمياً للمبتدئين","https://cs50.harvard.edu/x"],["HackerRank — تدريب عملي","تحديات برمجية متدرجة + شهادات","https://www.hackerrank.com"]],
+jobs:["مطور برمجيات","مهندس Backend","مهندس جودة QA","محلل نظم"]},
+{id:"ai",e:"🤖",t:"الذكاء الاصطناعي",s:"تعليم الآلات التفكير واتخاذ القرار",img:"https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",lv:3,d:"متقدم",dur:"12-18 شهر",dem:"🔥🔥🔥 عالٍ جداً",sal:"مرتفع جداً",math:"نعم بقوة",bg:0,demf:1,mathf:1,
+desc:"الذكاء الاصطناعي يهدف لبناء أنظمة تحاكي الذكاء البشري: فهم اللغة (NLP)، الرؤية الحاسوبية، الروبوتات، والنماذج التوليدية مثل ChatGPT. يتطلب أساساً قوياً في البرمجة والرياضيات (جبر خطي، احتمالات، تفاضل).",
+req:[["🐍","إتقان Python ومكتباتها (NumPy, Pandas) — شرط لا غنى عنه."],["📐","رياضيات قوية: جبر خطي + احتمالات وإحصاء + تفاضل وتكامل أساسي."],["🧩","أساسيات الخوارزميات وهياكل البيانات من تخصص هندسة البرمجيات."],["📊","فهم البيانات وطريقة جمعها وتنظيفها وتحليلها."]],
+path:[["المرحلة 1: تأسيس Python والرياضيات (3 أشهر)","NumPy و Pandas + مراجعة الجبر الخطي والاحتمالات (Khan Academy)."],["المرحلة 2: تعلم الآلة الكلاسيكي (3 أشهر)","Regression, Classification, Clustering باستخدام Scikit-learn."],["المرحلة 3: التعلم العميق (3 أشهر)","الشبكات العصبية مع TensorFlow / PyTorch وبناء أول نموذج صور."],["المرحلة 4: التخصص الدقيق (3 أشهر)","اختر: NLP أو رؤية حاسوبية أو نماذج توليدية LLM."],["المرحلة 5: مشاريع ومعرض أعمال (مستمر)","مشاريع Kaggle + نشر نماذج + ورقة أو مقال تقني."]],
+res:[["Machine Learning — Andrew Ng (Coursera)","الأشهر عالمياً • أساس ML","https://www.coursera.org/learn/machine-learning"],["Kaggle Learn — تعلم بالتطبيق","مسابقات + بيانات حقيقية مجاناً","https://www.kaggle.com/learn"],["قناة هشام عاصم / ML بالعربي","شرح عربي مبسط للذكاء الاصطناعي","https://www.youtube.com/results?search_query=Machine+Learning+arabic"]],
+jobs:["مهندس ذكاء اصطناعي","مهندس تعلم آلة","باحث NLP","مهندس رؤية حاسوبية"]},
+{id:"ds",e:"📊",t:"علوم البيانات وتحليلها",s:"تحويل البيانات إلى قرارات وأرباح",img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",lv:2,d:"متوسط",dur:"8-12 شهر",dem:"🔥🔥🔥 عالٍ جداً",sal:"مرتفع",math:"نعم (إحصاء)",bg:0,demf:1,mathf:1,
+desc:"عالم البيانات يستخرج القيمة من كميات ضخمة من البيانات: جمعها، تنظيفها، تحليلها، وعرضها بلوحات تفاعلية، ثم بناء نماذج تنبؤية. يجمع بين البرمجة والإحصاء ومهارات العرض. مطلوب بشدة في البنوك والتجارة والصحة.",
+req:[["📈","الإحصاء والاحتمالات — قلب التخصص (المتوسط، الانحراف، التوزيعات، اختبار الفرضيات)."],["🐍","Python (Pandas, Matplotlib) أو R + لغة SQL لقواعد البيانات."],["📑","Excel ومهارات العرض التقديمي — تُستخدم يومياً في سوق العمل."],["🧠","فضول تحليلي: حب طرح الأسئلة على الأرقام واستخلاص القصص منها."]],
+path:[["المرحلة 1: Excel + SQL (شهران)","أتقن الجداول المحورية ثم SQL: SELECT, JOIN, GROUP BY."],["المرحلة 2: Python للبيانات (شهران)","Pandas للتنظيف + Matplotlib/Seaborn للرسوم البيانية."],["المرحلة 3: الإحصاء التطبيقي (شهر)","اختبارات A/B وتحليل الارتباط على بيانات حقيقية."],["المرحلة 4: لوحات العرض (شهر)","Power BI أو Tableau وبناء Dashboard احترافي."],["المرحلة 5: التنبؤ والمعرض (3 أشهر)","نماذج Scikit-learn + مشروعان كاملان على Kaggle."]],
+res:[["Google Data Analytics (Coursera)","شهادة مهنية معتمدة للمبتدئين","https://www.coursera.org/professional-certificates/google-data-analytics"],["DataCamp — تعلم تفاعلي","مسارات Python و SQL و Power BI","https://www.datacamp.com"],["Kaggle Datasets & Courses","بيانات حقيقية + دورات مجانية","https://www.kaggle.com"]],
+jobs:["محلل بيانات","عالم بيانات","محلل أعمال BI","مهندس بيانات"]},
+{id:"sec",e:"🛡️",t:"الأمن السيبراني",s:"حماية الأنظمة والبيانات من الاختراق",img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",lv:3,d:"متقدم",dur:"12-18 شهر",dem:"🔥🔥🔥 عالٍ جداً",sal:"مرتفع جداً",math:"متوسط",bg:0,demf:1,
+desc:"الأمن السيبراني يحمي الأنظمة والشبكات والبيانات من الهجمات. يشمل اختبار الاختراق الأخلاقي، تحليل البرمجيات الخبيثة، أمن الشبكات، والاستجابة للحوادث. مجال مثير وطلب عليه يفوق العرض عالمياً، لكنه يحتاج صبراً وتأسيساً قوياً.",
+req:[["🌐","أساسيات الشبكات (TCP/IP, DNS, HTTP) — شهادة Network+ بداية مثالية."],["🐧","نظام Linux وسطر الأوامر — بيئة العمل الأساسية لخبراء الأمن."],["🐍","برمجة Python + أساسيات الويب (HTML/JS) لفهم الثغرات."],["⚖️","الأخلاقيات والقانون: العمل أخلاقي 100% وبأذونات رسمية فقط."]],
+path:[["المرحلة 1: أساسيات IT (3 أشهر)","Network+ ثم Linux+ : الشبكات وأنظمة التشغيل بعمق."],["المرحلة 2: Security+ (شهران)","مفاهيم التشفير والثغرات وإدارة المخاطر + شهادة CompTIA Security+."],["المرحلة 3: الاختراق الأخلاقي (3 أشهر)","أدوات Kali Linux، Burp Suite، ومنصة TryHackMe العملية."],["المرحلة 4: الاحتراف (4 أشهر)","شهادة CEH أو eJPT + تحديات HackTheBox."],["المرحلة 5: التخصص (مستمر)","اختر: اختبار اختراق، SOC، تحليل جنائي رقمي، أو أمن سحابي."]],
+res:[["TryHackMe — تعلم بالاختراق العملي","غرف تفاعلية ممتعة للمبتدئين","https://tryhackme.com"],["CompTIA Security+ (Professor Messer)","مجاني على يوتيوب + منهج معتمد","https://www.youtube.com/@professormesser"],["HackTheBox Academy","مختبرات اختراق احترافية متدرجة","https://academy.hackthebox.com"]],
+jobs:["مختبِر اختراق","محلل SOC","خبير استجابة للحوادث","مهندس أمن سحابي"]},
+{id:"net",e:"🌐",t:"الشبكات وأنظمة التشغيل",s:"العمود الفقري الذي يربط العالم",img:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",lv:1,d:"مبتدئ",dur:"6-9 أشهر",dem:"🔥🔥 متوسط-عالٍ",sal:"متوسط-مرتفع",math:"بسيط",bg:1,
+desc:"تخصص الشبكات يبني ويدير البنية التحتية للاتصالات: التوجيه، التبديل، الخوادم، والحوسبة. أساس ممتاز لكل مبتدئ، وبوابة طبيعية للأمن السيبراني والحوسبة السحابية. شهادات Cisco (CCNA) هي المعيار الذهبي.",
+req:[["💻","حاسوب عادي + برنامج محاكاة مجاني (Cisco Packet Tracer)."],["🔤","إنجليزية تقنية أساسية لمصطلحات الشبكات."],["🧩","فهم أساسيات الحاسب (مكونات، أنظمة تشغيل)."],["🔧","حب الجانب العملي: تركيب وإعداد وتجريب الأجهزة افتراضياً."]],
+path:[["المرحلة 1: أساسيات الشبكات (شهران)","IP Addressing, Subnetting, OSI Model عبر Packet Tracer."],["المرحلة 2: CCNA (3 أشهر)","التوجيه والتبديل (Routing/Switching) + الشهادة الرسمية."],["المرحلة 3: أنظمة التشغيل (شهران)","إدارة Windows Server و Linux Servers."],["المرحلة 4: خدمات متقدمة (شهر)","DNS, DHCP, VPN, Firewall عملياً."],["المرحلة 5: التوسع (مستمر)","انتقل للأمن أو السحابة (AWS/Azure) لرفع قيمتك السوقية."]],
+res:[["Jeremy's IT Lab — CCNA مجاناً","الأفضل عالمياً لشهادة CCNA","https://www.youtube.com/@JeremysITLab"],["Cisco Networking Academy","منهج سيسكو الرسمي المجاني","https://www.netacad.com"],["Professor Messer — Network+","شرح مبسط للمبتدئين تماماً","https://www.youtube.com/@professormesser"]],
+jobs:["مهندس شبكات","مدير أنظمة","فني دعم IT","مهندس بنية سحابية"]},
+{id:"db",e:"🗄️",t:"قواعد البيانات",s:"تنظيم كنوز المعلومات واسترجاعها",img:"https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80",lv:1,d:"مبتدئ",dur:"4-6 أشهر",dem:"🔥🔥 مطلوب دائماً",sal:"متوسط-مرتفع",math:"بسيط",bg:1,
+desc:"كل تطبيق في العالم يقف خلفه قاعدة بيانات. تتعلم تصميم الجداول والعلاقات، لغة SQL، وإدارة أنظمة مثل MySQL و PostgreSQL و MongoDB. تخصص سريع العائد ومناسب جداً للمبتدئين.",
+req:[["🧠","تفكير منظم ومنطقي — تصميم الجداول يشبه ترتيب المكتبة."],["💻","حاسوب عادي + تثبيت MySQL المجاني."],["🔤","إنجليزية بسيطة (كلمات SELECT و WHERE تُحفظ بسرعة)."],["📊","لا يشترط أي خبرة برمجية سابقة!"]],
+path:[["المرحلة 1: مفاهيم + SQL أساسي (شهر)","الجداول والعلاقات + SELECT, WHERE, ORDER BY."],["المرحلة 2: SQL متقدم (شهر)","JOIN, GROUP BY, Subqueries, Views."],["المرحلة 3: التصميم (شهر)","Normalization + رسم ERD وتصميم قاعدة متجر كاملة."],["المرحلة 4: NoSQL (شهر)","MongoDB والفرق بين SQL و NoSQL ومتى تستخدم كلاً."],["المرحلة 5: الإدارة (مستمر)","النسخ الاحتياطي، الصلاحيات، تحسين الأداء + شهادة."]],
+res:[["Elzero — دورة SQL بالعربية","شرح عربي ممتاز من الصفر","https://www.youtube.com/@ElzeroWebSchool"],["SQLBolt — تعلم تفاعلي","تدرب على SQL داخل المتصفح","https://sqlbolt.com"],["PostgreSQL Tutorial","مرجع عملي شامل مجاني","https://www.postgresqltutorial.com"]],
+jobs:["مدير قواعد بيانات DBA","مطور SQL","مهندس بيانات","محلل BI"]},
+{id:"web",e:"💻",t:"تطوير الويب",s:"بناء مواقع وتطبيقات الإنترنت",img:"https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",lv:1,d:"مبتدئ",dur:"6-10 أشهر",dem:"🔥🔥🔥 عالٍ جداً",sal:"مرتفع",math:"لا يحتاج",bg:1,demf:1,
+desc:"تطوير الويب هو أسرع طريق لسوق العمل: تتعلم بناء المواقع (Frontend: HTML/CSS/JavaScript) ثم خوادمها (Backend). نتائج مرئية سريعة، فرص عمل حر ضخمة، ومجتمع عربي ضخم يدعمك. ينقسم لمسار واجهات ومسار خوادم ومسار Full-Stack.",
+req:[["💻","أي حاسوب + متصفح — لا متطلبات تقنية إطلاقاً."],["🎨","ذوق وحب للتصميم (للواجهات) أو منطق (للخوادم) — اختر ما يناسبك."],["🔤","إنجليزية بسيطة جداً."],["⏰","ساعة يومياً كافية — الاستمرارية أهم من الكثافة."]],
+path:[["المرحلة 1: الأساس (شهران)","HTML + CSS + مشروعا صفحة هبوط ومتجر بسيط."],["المرحلة 2: JavaScript (شهران)","اللغة + DOM + مشروع قائمة مهام وتطبيق طقس."],["المرحلة 3: إطار عمل (شهران)","React (واجهات) + Tailwind CSS + 3 مشاريع."],["المرحلة 4: Backend (شهران)","Node.js + Express + MongoDB + API كامل."],["المرحلة 5: الإطلاق (مستمر)","النشر على Vercel + معرض أعمال + مستقل/Upwork."]],
+res:[["Elzero Web School — مسار Full-Stack","أضخم محتوى عربي مجاني للويب","https://www.youtube.com/@ElzeroWebSchool"],["freeCodeCamp — شهادات مجانية","منهج عملي + مشاريع معتمدة","https://www.freecodecamp.org"],["MDN Web Docs — المرجع الرسمي","توثيق HTML/CSS/JS المعتمد","https://developer.mozilla.org"]],
+jobs:["مطور واجهات Frontend","مطور Backend","مطور Full-Stack","مستقل ويب"]},
+{id:"mob",e:"📱",t:"تطوير تطبيقات الموبايل",s:"تطبيقات بجيوب الملايين",img:"https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",lv:2,d:"متوسط",dur:"8-12 شهر",dem:"🔥🔥🔥 عالٍ",sal:"مرتفع",math:"بسيط",bg:0,demf:1,
+desc:"تتعلم بناء تطبيقات iOS و Android — إما أصلياً (Kotlin / Swift) أو بع framework واحد للمنصتين (Flutter). سوق ضخم ورواتب ممتازة، وميزة Flutter أنها تختصر الطريق بتقنية واحدة لمنصتين.",
+req:[["💻","حاسوب بذاكرة 8GB+ (محاكي الهواتف ثقيل نسبياً)."],["🧩","أساسيات البرمجة (متغيرات، OOP) — شهر تأسيس يكفي."],["🎨","اهتمام بتجربة المستخدم — التطبيقات فن قبل أن تكون كوداً."],["📱","هاتف للتجربة العملية (يفضل Android للبداية)."]],
+path:[["المرحلة 1: لغة Dart + OOP (شهر)","أساس Dart ثم البرمجة كائنية التوجه."],["المرحلة 2: أساسيات Flutter (شهران)","الواجهات Widgets + التنقل + إدارة الحالة."],["المرحلة 3: البيانات (شهران)","Firebase + REST API + قواعد بيانات محلية."],["المرحلة 4: تطبيقات كاملة (شهران)","متجر + تطبيق محادثة + تطبيق طقس — انشرها على GitHub."],["المرحلة 5: النشر (مستمر)","النشر على Google Play + App Store + العمل الحر."]],
+res:[["Flutter الرسمي — Docs & Codelabs","التوثيق الرسمي + دروس تطبيقية","https://docs.flutter.dev"],["قناة وائل أبو حمزة / Flutter بالعربي","شرح عربي عملي لمشاريع حقيقية","https://www.youtube.com/results?search_query=flutter+arabic"],["Udemy — Flutter & Dart","دورات مدفوعة بخصومات دائمة","https://www.udemy.com/topic/flutter/"]],
+jobs:["مطور Flutter","مطور Android","مطور iOS","مستقل تطبيقات"]},
+{id:"cloud",e:"☁️",t:"الحوسبة السحابية و DevOps",s:"تشغيل العالم من مراكز البيانات",img:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",lv:2,d:"متوسط",dur:"8-12 شهر",dur2:1,dem:"🔥🔥🔥 عالٍ جداً",sal:"مرتفع جداً",math:"بسيط",bg:0,demf:1,
+desc:"السحابة (AWS, Azure, Google Cloud) هي طريقة تشغيل كل خدمات الإنترنت الحديثة بدل الخوادم التقليدية. و DevOps يدمج التطوير مع التشغيل عبر Docker و CI/CD. من أعلى المجالات أجراً وأسرعها نمواً.",
+req:[["🌐","أساسيات الشبكات وأنظمة Linux — شهر تأسيس."],["🐧","سطر أوامر Linux بطلاقة أساسية."],["🐍","برمجة بسيطة (Python/Bash) لكتابة سكربتات الأتمتة."],["💳","بطاقة/حساب مجاني على AWS (الطبقة المجانية تكفي للتعلم)."]],
+path:[["المرحلة 1: Linux + شبكات (شهران)","إتقان سطر الأوامر + أساسيات TCP/IP."],["المرحلة 2: شهادة سحابية (شهران)","AWS Cloud Practitioner ثم Solutions Architect."],["المرحلة 3: الحاويات (شهر)","Docker ثم Kubernetes أساسيات."],["المرحلة 4: DevOps (شهران)","Git + CI/CD (GitHub Actions) + Terraform."],["المرحلة 5: مشاريع (مستمر)","نشر تطبيق كامل على السحابة + شهادة احترافية."]],
+res:[["AWS Skill Builder — مجاني","تدريب أمازون الرسمي المجاني","https://skillbuilder.aws"],["freeCodeCamp — Docker & K8s","دورات DevOps مجانية عملية","https://www.freecodecamp.org"],["Cloud Guru / A Cloud Guru","مسارات شهادات احترافية","https://acloudguru.com"]],
+jobs:["مهندس سحابي","مهندس DevOps","مهندس موثوقية SRE","استشاري حلول"]},
+{id:"iot",e:"🔌",t:"إنترنت الأشياء والأنظمة المدمجة",s:"عندما تتكلم الأجهزة مع بعضها",img:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",lv:3,d:"متقدم",dur:"10-14 شهر",dem:"🔥🔥 متنامٍ",sal:"مرتفع",math:"متوسط (فيزياء)",bg:0,mathf:0,
+desc:"تخصص يجمع البرمجة بالإلكترونيات: حساسات، متحكمات (Arduino/ESP32)، وربط الأجهزة بالإنترنت (البيوت الذكية، المدن الذكية، السيارات). مثالي لعشاق الهاردوير والتجارب العملية الملموسة.",
+req:[["⚡","أساسيات الكهرباء والإلكترونيات (جهد، تيار، مقاومة) — مستوى مبسط."],["🔧","لوحة Arduino أو ESP32 (رخيصة ~ 100-200 جنيه) + حساسات."],["🔤","لغة C/C++ أساسيات — لغة المتحكمات."],["📐","فيزياء ورياضيات الثانوية العامة كافية."]],
+path:[["المرحلة 1: إلكترونيات + Arduino (شهران)","دوائر بسيطة + برمجة C للمتحكم + مشاريع LED وحساسات."],["المرحلة 2: ESP32 والاتصال (شهران)","WiFi + Bluetooth + إرسال البيانات للإنترنت."],["المرحلة 3: إنترنت الأشياء (شهران)","بروتوكول MQTT + منصات Blynk/ThingsBoard + تحكم عن بعد."],["المرحلة 4: Python + سحابة (شهران)","ربط الأجهزة بخوادم سحابية ولوحات مراقبة."],["المرحلة 5: مشروع تخرج (مستمر)","بيت ذكي أو نظام ري ذكي كامل — معرض فيديو يوثقه."]],
+res:[["Arduino Official Tutorials","دروس أردوينو الرسمية خطوة بخطوة","https://docs.arduino.cc"],["GreatScott! / ElectroBOOM يوتيوب","إلكترونيات ممتعة وعملية","https://www.youtube.com/@greatscottlab"],["Random Nerd Tutorials — ESP32","أفضل مرجع لمشاريع ESP32","https://randomnerdtutorials.com"]],
+jobs:["مهندس أنظمة مدمجة","مهندس IoT","مهندس روبوتات","مطور Firmware"]},
+{id:"game",e:"🎮",t:"تطوير الألعاب والواقع الافتراضي",s:"اصنع العوالم التي يعشقها الملايين",img:"https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800&q=80",lv:2,d:"متوسط",dur:"10-14 شهر",dem:"🔥🔥 متنامٍ",sal:"مرتفع",math:"متوسط (فيزياء)",bg:0,
+desc:"تتعلم صناعة الألعاب بمحركات Unity (C#) أو Unreal (C++)، والواقع الافتراضي VR والمعزز AR. يجمع البرمجة بالفن والتصميم ثلاثي الأبعاد. صناعة بمليارات الدولارات وفرص عمل عن بعد واسعة.",
+req:[["🎨","شغف بالألعاب + حس فني أساسي (يتطور بالتعلم)."],["💻","حاسوب بكرت شاشة متوسط لتشغيل محرك Unity."],["🧩","أساسيات البرمجة (C# بداية مثالية وسهلة)."],["📐","رياضيات بسيطة: إحداثيات ومتجهات وفيزياء الحركة."]],
+path:[["المرحلة 1: C# أساسيات (شهران)","اللغة + OOP عبر مشاريع نصية بسيطة."],["المرحلة 2: Unity أساسيات (شهران)","الواجهة + فيزياء + أول لعبة 2D كاملة."],["المرحلة 3: ألعاب 3D (3 أشهر)","نمذجة + إضاءة + لعبة ثلاثية الأبعاد."],["المرحلة 4: VR/AR (شهران)","نظارات VR أو AR Foundation للهواتف."],["المرحلة 5: النشر (مستمر)","نشر لعبة على itch.io و Steam + معرض أعمال مرئي."]],
+res:[["Unity Learn — رسمي ومجاني","مسارات تعلم الألعاب المعتمدة","https://learn.unity.com"],["Brackeys يوتيوب — Unity","أشهر قناة تعليم Unity عالمياً","https://www.youtube.com/@Brackeys"],["Unreal Engine Docs","توثيق أنريل الرسمي للألعاب الضخمة","https://dev.epicgames.com"]],
+jobs:["مطور ألعاب","مطور VR/AR","مصمم مستويات","مطور Unity/Unreal"]},
+{id:"cs",e:"🧮",t:"العلوم النظرية والخوارزميات",s:"الرياضيات العميقة خلف كل شيء",img:"https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80",lv:3,d:"متقدم",dur:"12-24 شهر",dem:"🔥🔥 نخبوي",sal:"مرتفع جداً",math:"نعم بقوة",bg:0,mathf:1,
+desc:"القلب الأكاديمي للحاسب: الخوارزميات المتقدمة، نظرية الحوسبة، التشفير، لغات البرمجة، ونظم التشغيل. طريق الباحثين ومهندسي الشركات الكبرى (Google/Meta) حيث المقابلات كلها خوارزميات. يتطلب حباً حقيقياً للرياضيات.",
+req:[["📐","رياضيات قوية: رياضيات متقطعة + منطق + براهين."],["🧩","إتقان البرمجة بلغة واحدة على الأقل (C++ مفضلة)."],["📚","استعداد للدراسة الأكاديمية العميقة والصبر الطويل."],["🔤","إنجليزية جيدة لقراءة الأوراق العلمية."]],
+path:[["المرحلة 1: رياضيات متقطعة (3 أشهر)","منطق، مجموعات، استقراء، نظرية الأعداد (MIT OCW)."],["المرحلة 2: خوارزميات متقدمة (4 أشهر)","Dynamic Programming, Graphs, Greedy + 200 مسألة LeetCode."],["المرحلة 3: نظم التشغيل (3 أشهر)","العمليات، الذاكرة، Concurrency (كتاب OSTEP مجاني)."],["المرحلة 4: التشفير والنظرية (3 أشهر)","نظرية الحوسبة + تشفير تطبيقي."],["المرحلة 5: البحث (مستمر)","مسابقات ACM + مقابلات FAANG + دراسات عليا."]],
+res:[["MIT OpenCourseWare — خوارزميات","محاضرات MIT مجانية كاملة","https://ocw.mit.edu"],["LeetCode — تدريب المقابلات","آلاف المسائل + مقابلات حقيقية","https://leetcode.com"],["OSTEP — نظم التشغيل مجاناً","أفضل كتاب نظم تشغيل مجاني","https://pages.cs.wisc.edu/~remzi/OSTEP/"]],
+jobs:["باحث خوارزميات","مهندس FAANG","أستاذ جامعي","خبير تشفير"]}
+];
+const grid=document.getElementById('grid');
+const cmpB=document.querySelector('#cmp tbody');
+function diffClass(d){return d.includes('مبتدئ')?'d1':d.includes('متوسط')?'d2':'d3'}
+function render(f="all",q=""){
+  grid.innerHTML="";
+  F.filter(x=>(f==="all"||(f==="beginner"&&x.bg)||(f==="demand"&&x.demf)||(f==="math"&&x.mathf))&&(x.t+x.s+x.desc).includes(q)).forEach(x=>{
+    const c=document.createElement('div');c.className='card';
+    c.innerHTML=`<div class="card-img"><div class="card-emoji">${x.e}</div><div class="card-diff ${diffClass(x.d)}">${x.d}</div><img loading="lazy" src="${x.img}" alt="${x.t}"></div>
+    <div class="card-body"><h3>${x.t}</h3><p style="color:var(--p2);font-weight:800;font-size:.85rem">${x.s}</p><p>${x.desc.slice(0,110)}...</p>
+    <div class="meta"><span>⏱️ ${x.dur}</span><span>${x.dem.split(' ')[0]} طلب</span><span>💰 ${x.sal}</span></div>
+    <div class="card-foot"><button class="mini-btn solid" onclick="openM('${x.id}')">التفاصيل الكاملة 📖</button></div></div>`;
+    c.onclick=e=>{if(!e.target.closest('button'))openM(x.id)};
+    grid.appendChild(c);
+  });
+  if(!grid.children.length)grid.innerHTML='<p style="color:var(--muted);text-align:center;grid-column:1/-1;padding:40px">لا توجد نتائج مطابقة — جرّب كلمة أخرى 🔍</p>';
+}
+render();
+document.getElementById('search').oninput=e=>render(document.querySelector('.chip.on').dataset.f,e.target.value.trim());
+document.querySelectorAll('.chip').forEach(ch=>ch.onclick=()=>{document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));ch.classList.add('on');render(ch.dataset.f,document.getElementById('search').value.trim())});
+cmpB.innerHTML=F.map(x=>`<tr><td>${x.e} ${x.t}</td><td><span class="card-diff ${diffClass(x.d)}">${x.d}</span></td><td>${x.dur}</td><td>${x.dem}</td><td>${x.sal}</td><td>${x.math}</td></tr>`).join('');
+// modal
+const mov=document.getElementById('mov');
+function openM(id){
+  const x=F.find(f=>f.id===id);if(!x)return;
+  document.getElementById('mimg').src=x.img;
+  document.getElementById('mt').innerHTML=x.e+' '+x.t;
+  document.getElementById('ms').textContent=x.s+` • ⏱️ ${x.dur} • ${x.dem} • 💰 ${x.sal}`;
+  document.getElementById('p0').innerHTML=`<p style="line-height:2.1;font-size:1.02rem">${x.desc}</p><div class="meta" style="margin-top:14px"><span>📊 الصعوبة: ${x.d}</span><span>⏱️ المدة: ${x.dur}</span><span>📐 رياضيات: ${x.math}</span><span>${x.dem}</span></div>`;
+  document.getElementById('p1').innerHTML='<div class="req-list">'+x.req.map(r=>`<div class="req"><i>${r[0]}</i><span>${r[1]}</span></div>`).join('')+'</div>';
+  document.getElementById('p2').innerHTML='<div class="tl">'+x.path.map(p=>`<div class="tl-item"><b>${p[0]}</b><p>${p[1]}</p></div>`).join('')+'</div>';
+  document.getElementById('p3').innerHTML=x.res.map((r,i)=>`<div class="res-card"><div class="res-num">${i+1}</div><div><b>${r[0]}</b><small>${r[1]}</small></div><a href="${r[2]}" target="_blank">زيارة ↗</a></div>`).join('')+'<p style="color:var(--muted);font-size:.85rem">💡 نصيحة: ابدأ بمصدر واحد فقط وأنهِه قبل الانتقال لغيره.</p>';
+  document.getElementById('p4').innerHTML='<div class="jobs">'+x.jobs.map(j=>`<span>💼 ${j}</span>`).join('')+'</div><p style="color:var(--muted);margin-top:14px;line-height:2">متوسط الرواتب عربياً: 8-25 ألف جنيه/ريال للمبتدئ، ويتضاعف بالخبرة والعمل عن بعد مع شركات أجنبية. 🌍</p>';
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('on',i===0));
+  document.querySelectorAll('.tabpane').forEach((p,i)=>p.classList.toggle('on',i===0));
+  mov.classList.add('open');document.body.style.overflow='hidden';
+}
+function closeM(){mov.classList.remove('open');document.body.style.overflow=''}
+mov.onclick=e=>{if(e.target===mov)closeM()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.tabpane').forEach(x=>x.classList.remove('on'));t.classList.add('on');document.getElementById('p'+t.dataset.t).classList.add('on')});
+// faq
+const FAQS=[
+["🤔 أنا مبتدئ تماماً، من أين أبدأ؟","ابدأ بهندسة البرمجيات (Python) لمدة شهرين، ثم جرّب تطوير الويب أو قواعد البيانات. لا تبدأ بالذكاء الاصطناعي أو الأمن مباشرة — كلاهما يحتاج تأسيساً أولاً."],
+["⏰ كم ساعة أحتاج يومياً؟","ساعة إلى ساعتان يومياً بانتظام تكفي تماماً. الاستمرارية 6 أشهر بساعة يومية تتفوق على الحماس المتقطع."],
+["💰 أي تخصص الأعلى راتباً؟","الذكاء الاصطناعي والسحابة والأمن السيبراني في الصدارة، لكن التميز في أي مجال يتفوق على اختيار المجال نفسه."],
+["🎓 هل أحتاج شهادة جامعية؟","لا — سوق التقنية يعتمد على المهارة والمشاريع العملية (GitHub). الشهادات المهنية (CCNA, AWS, Security+) تفيد أكثر من الشهادات الأكاديمية في معظم المجالات."],
+["🔀 هل يمكن الجمع بين تخصصين؟","نعم بعد التأسيس! مسارات طبيعية: شبكات ← أمن ← سحابة، أو ويب ← موبايل، أو برمجة ← بيانات ← ذكاء اصطناعي."],
+["📐 أكره الرياضيات، ما أنسب تخصص؟","تطوير الويب والموبايل وقواعد البيانات والشبكات — كلها تحتاج حداً أدنى من الرياضيات. تجنب مبدئياً الذكاء الاصطناعي والعلوم النظرية."]];
+document.getElementById('faq').innerHTML=FAQS.map(f=>`<div class="faq-item"><div class="faq-q">${f[0]}<span>＋</span></div><div class="faq-a">${f[1]}</div></div>`).join('');
+document.querySelectorAll('.faq-q').forEach(q=>q.onclick=()=>q.parentElement.classList.toggle('open'));
+// inquiry form
+let qs=JSON.parse(localStorage.getItem('qs')||'[]');
+function paintQ(){document.getElementById('qc').textContent=qs.length;
+document.getElementById('qlist').innerHTML=qs.length?qs.slice().reverse().map(q=>`<div style="background:#ffffff08;border:1px solid var(--line);border-radius:10px;padding:10px 14px"><b style="color:#fff">${q.n}</b> • ${q.f}<br>${q.m.slice(0,80)}...</div>`).join(''):'<p>لا توجد استفسارات بعد — كن أول من يسأل! ✨</p>'}
+paintQ();
+document.getElementById('qform').onsubmit=e=>{
+  e.preventDefault();
+  const n=qn.value.trim(),em=qe.value.trim(),f=qf.value,m=qm.value.trim();
+  qs.push({n,f,m,t:Date.now()});localStorage.setItem('qs',JSON.stringify(qs));paintQ();
+  const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
+  window.location.href=`mailto:hello@cs-map.ar?subject=${encodeURIComponent('استفسار: '+f+' — '+n)}&body=${encodeURIComponent('الاسم: '+n+'\nالبريد: '+em+'\nالتخصص: '+f+'\n\n'+m)}`;
+  e.target.reset();
+};
+</script>
+</body>
+</html>
